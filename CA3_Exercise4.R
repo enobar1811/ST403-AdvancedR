@@ -57,3 +57,13 @@ sigma_unb_mat <- sqrt(sum(resid_mat^2) / (n - p))
 ## 5. SEs from Hessian
 vcov_all <- solve(fit$hessian)
 se_beta  <- sqrt(diag(vcov_all)[1:p])
+
+## 6. Compare with lm()
+
+lm_fit <- lm(y ~ x1 + x2 + x3, data = df)
+
+coef_lm   <- coef(lm_fit)           # estimated coefficients
+sigma_lm  <- summary(lm_fit)$sigma  # residual std. dev. (unbiased)
+
+coef_lm
+sigma_lm
